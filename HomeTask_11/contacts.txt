@@ -1,0 +1,8 @@
+John,Doe,Johnny,1990
+PHONE:123-456-7890
+EMAIL:john.doe@example.com
+END
+Jane,Smith,Janie,1995
+PHONE:987-654-3210
+EMAIL:jane.smith@example.org
+END
