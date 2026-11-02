@@ -52,7 +52,8 @@ public class CoffeeMachine {
         }
     }
 
-    public CoffeeMachine(Model premium) {
+    public CoffeeMachine(Model model) {
+        if (model == null) throw new IllegalArgumentException("Model cannot be null");
         this.model = model;
         this.coffeeAmount = model.maxCoffeeAmount;
         this.waterAmount = model.maxWaterAmount;

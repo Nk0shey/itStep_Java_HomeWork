@@ -25,12 +25,16 @@ public class Fraction {
     }
 
     private void simplify() {
-        int gcd = gcd(numerator, denominator);
-        numerator /= gcd;
-        denominator /= gcd;
+        long a = numerator, b = denominator;
+        long divisor = gcd(Math.abs(a), Math.abs(b));
+        a /= divisor;
+        b /= divisor;
+        if (b < 0) { a = -a; b = -b; }
+        numerator = Math.toIntExact(a);
+        denominator = Math.toIntExact(b);
     }
 
-    private int gcd(int a, int b) {
+    private long gcd(long a, long b) {
         return b == 0 ? a : gcd(b, a % b);
     }
 

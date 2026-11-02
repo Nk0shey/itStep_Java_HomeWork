@@ -13,21 +13,23 @@ public class MoneyEngine {
     }
 
     public MoneyEngine add(MoneyEngine other) {
-        long totalKopecks = this.toKopecks() + other.toKopecks();
+        long totalKopecks = Math.addExact(this.toKopecks(), other.toKopecks());
         return fromKopecks(totalKopecks);
     }
 
     public MoneyEngine subtract(MoneyEngine other) {
-        long totalKopecks = this.toKopecks() - other.toKopecks();
+        long totalKopecks = Math.subtractExact(this.toKopecks(), other.toKopecks());
         return fromKopecks(totalKopecks);
     }
 
     public MoneyEngine multiply(double multiplier) {
+        if (!Double.isFinite(multiplier)) throw new IllegalArgumentException("Multiplier must be finite");
         long totalKopecks = Math.round(this.toKopecks() * multiplier);
         return fromKopecks(totalKopecks);
     }
 
     public MoneyEngine divide(double divisor) {
+        if (!Double.isFinite(divisor)) throw new IllegalArgumentException("Divisor must be finite");
         if (divisor == 0) {
             throw new ArithmeticException("Ділення на нуль неможливе");
         }
@@ -45,11 +47,11 @@ public class MoneyEngine {
 
     @Override
     public String toString() {
-        return hryvnias + "," + (kopecks < 10 ? "0" : "") + kopecks;
+        return java.math.BigDecimal.valueOf(toKopecks(), 2).toPlainString().replace('.', ',');
     }
 
     private long toKopecks() {
-        return hryvnias * 100 + kopecks;
+        return Math.addExact(Math.multiplyExact(hryvnias, 100), kopecks);
     }
 
     private static MoneyEngine fromKopecks(long totalKopecks) {

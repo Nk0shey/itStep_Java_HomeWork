@@ -53,11 +53,11 @@ public class CoffeeMachine2 {
         if (!isOn) return "Кавомашина вимкнена.";
         if (coffeeAmount < 22) return "Відсутня мелена кава.";
         if (waterAmount < 30) return "Відсутня вода.";
-        if (wasteBinContent >= wasteBinCapacity) return "Переповнений бак з відпрацьованою кавою.";
+        if (wasteBinContent + 22 > wasteBinCapacity) return "Переповнений бак з відпрацьованою кавою.";
 
         coffeeAmount -= 22;
         waterAmount -= 30;
-        wasteBinContent += 1;
+        wasteBinContent += 22;
 
         return "Еспресо готове!";
     }
@@ -67,43 +67,45 @@ public class CoffeeMachine2 {
         if (!isOn) return "Кавомашина вимкнена.";
         if (coffeeAmount < 22) return "Відсутня мелена кава.";
         if (waterAmount < 100) return "Відсутня вода.";
-        if (wasteBinContent >= wasteBinCapacity) return "Переповнений бак з відпрацьованою кавою.";
+        if (wasteBinContent + 22 > wasteBinCapacity) return "Переповнений бак з відпрацьованою кавою.";
 
         coffeeAmount -= 22;
         waterAmount -= 100;
-        wasteBinContent += 1;
+        wasteBinContent += 22;
 
         return "Американо готове!";
     }
 
     // Метод для приготування капучино
     public String makeCappuccino(double milkAmount) {
+        validateMilk(milkAmount);
         if (!isOn) return "Кавомашина вимкнена.";
         if (coffeeAmount < 22) return "Відсутня мелена кава.";
         if (waterAmount < 30) return "Відсутня вода.";
-        if (wasteBinContent >= wasteBinCapacity) return "Переповнений бак з відпрацьованою кавою.";
+        if (wasteBinContent + 22 > wasteBinCapacity) return "Переповнений бак з відпрацьованою кавою.";
         if (this.milkAmount < milkAmount) return "Молоко відсутнє.";
 
         this.coffeeAmount -= 22;
         this.waterAmount -= 30;
         this.milkAmount -= milkAmount;
-        this.wasteBinContent += 1;
+        this.wasteBinContent += 22;
 
         return "Капучино готове!";
     }
 
     // Метод для приготування лате
     public String makeLatte(double milkAmount) {
+        validateMilk(milkAmount);
         if (!isOn) return "Кавомашина вимкнена.";
         if (coffeeAmount < 22) return "Відсутня мелена кава.";
         if (waterAmount < 30) return "Відсутня вода.";
-        if (wasteBinContent >= wasteBinCapacity) return "Переповнений бак з відпрацьованою кавою.";
+        if (wasteBinContent + 22 > wasteBinCapacity) return "Переповнений бак з відпрацьованою кавою.";
         if (this.milkAmount < milkAmount) return "Молоко відсутнє.";
 
         this.coffeeAmount -= 22;
         this.waterAmount -= 30;
         this.milkAmount -= milkAmount;
-        this.wasteBinContent += 1;
+        this.wasteBinContent += 22;
 
         return "Лате готове!";
     }
@@ -130,5 +132,8 @@ public class CoffeeMachine2 {
 
     public double getWasteBinContent() {
         return wasteBinContent;
+    }
+    private void validateMilk(double amount) {
+        if (!Double.isFinite(amount) || amount < 0) throw new IllegalArgumentException("Invalid milk amount");
     }
 }
