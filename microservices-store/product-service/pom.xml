@@ -11,8 +11,8 @@
     <groupId>com.nk0shey</groupId>
     <artifactId>product-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>microservices-store</name>
-    <description>microservices-store</description>
+    <name>product-service</name>
+    <description>Learning store product-service</description>
     <url/>
     <licenses>
         <license/>
@@ -40,7 +40,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
         <dependency>

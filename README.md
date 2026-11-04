@@ -64,4 +64,4 @@ The Maven configuration pins test/plugin versions and replaces duplicate floatin
 These projects are independent of the Java 17 exercise reactor above and require Java 21:
 
 - [ITstep_exam](ITstep_exam/README.md): Gradle-based exam covering HTTP validation, an external posts API and an email feature flag.
-- [microservices-store](microservices-store/README.md): Maven-based unfinished product-service skeleton; store and order functionality is not implemented.
+- [microservices-store](microservices-store/README.md): Maven-based product/order services with inventory reservations, idempotent checkout and persistent H2 databases.
