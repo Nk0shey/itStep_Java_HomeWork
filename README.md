@@ -58,3 +58,10 @@ Verified on Linux/OpenJDK 17: all 18 modules compile and **77 JUnit tests pass**
 The review repaired confirmed defects; it did not execute every possible menu path or validate every historical algorithm. Model-specific coffee tank limits remain simplified in later variants. See [review notes](docs/REVIEW.md) for exact scope.
 
 The Maven configuration pins test/plugin versions and replaces duplicate floating `RELEASE` dependencies. Compiled outputs and IDE files are ignored. Teaching scaffolds may have separate authorship; no blanket license is assigned.
+
+## Additional Spring Boot projects
+
+These projects are independent of the Java 17 exercise reactor above and require Java 21:
+
+- [ITstep_exam](ITstep_exam/README.md): Gradle-based exam covering HTTP validation, an external posts API and an email feature flag.
+- [microservices-store](microservices-store/README.md): Maven-based unfinished product-service skeleton; store and order functionality is not implemented.
